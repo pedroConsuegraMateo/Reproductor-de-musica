@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GetAudioService } from 'src/app/shared/get-audio.service';
 import { Cancion } from 'src/app/shared/models/cancion';
 
 @Component({
@@ -10,28 +11,28 @@ export class PistaComponent implements OnInit {
 
   public pista: Cancion[];
 
-  constructor() {
+  constructor(private getAudioService: GetAudioService) {
     this.pista = [
       {
-        audio: new Audio("assets/music/pista1.mp3"),
+        audio: getAudioService.getAudio("pista1"),
         titulo: "Pista 1",
         artista: "Bowser",
         album: "Super Mario Bross"
       },
       {
-        audio: new Audio("assets/music/pista2.mp3"),
+        audio: getAudioService.getAudio("pista2"),
         titulo: "Pista 2",
         artista: "Peach",
         album: "Super Mario Bross"
       },
       {
-        audio: new Audio("assets/music/pista3.mp3"),
+        audio: getAudioService.getAudio("pista3"),
         titulo: "Pista 3",
         artista: "Luigi",
         album: "Super Mario Bross"
       },
       {
-        audio: new Audio("assets/music/pista4.mp3"),
+        audio: getAudioService.getAudio("pista4"),
         titulo: "Pista 4",
         artista: "Satoru Iwata",
         album: "Super Mario Bross"
@@ -70,6 +71,10 @@ export class PistaComponent implements OnInit {
 
   public mute(pista: number){
     this.pista[pista].audio.muted = !this.pista[pista].audio.muted;
+  }
+
+  public getNumAleatorio(){
+    return Math.floor(Math.random() * 100);
   }
 
 }

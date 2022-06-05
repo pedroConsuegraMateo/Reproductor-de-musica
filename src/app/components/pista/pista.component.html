@@ -3,7 +3,7 @@
         <ng-container *ngFor="let cancion of this.pista">
             <div class="col">
                 <div class="card" style="width: 18rem;">
-                    <img src="https://source.unsplash.com/random/300x200" class="card-img-top" alt="pista cover">
+                    <img [src]="'https://source.unsplash.com/random/300x200?sig=' + this.getNumAleatorio()" class="card-img-top" alt="pista cover">
                     <div class="card-body">
                       <h5 class="card-title">{{cancion.titulo}} - {{cancion.artista}}</h5>
                       <p class="card-text">Álbum: {{cancion.album}}</p>
